@@ -47,7 +47,7 @@ class MainMenu : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         when (item.itemId){
             R.id.nav_rutas -> {
                 Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show()
-                val i = Intent(this, Login::class.java)
+                val i = Intent(this, ViewRoutes::class.java)
                 startActivity(i)
             }
             R.id.nav_viajes -> {
