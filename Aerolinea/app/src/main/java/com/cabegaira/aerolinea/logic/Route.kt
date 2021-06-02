@@ -1,4 +1,4 @@
-package com.cabegaira.aerolinea
+package com.cabegaira.aerolinea.logic
 
 
 class Route {

@@ -1,4 +1,4 @@
-package com.cabegaira.aerolinea
+package com.cabegaira.aerolinea.CRUD.Rutas
 
 import android.content.Intent
 import android.graphics.Canvas
@@ -14,13 +14,16 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cabegaira.aerolinea.Login
+import com.cabegaira.aerolinea.R
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import java.util.*
 import kotlin.collections.ArrayList
 
 import com.cabegaira.aerolinea.adapters.RecyclerView_Adapter_Routes
+import com.cabegaira.aerolinea.data.Routes
+import com.cabegaira.aerolinea.logic.Route
 
 class ViewRoutes : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,7 +32,7 @@ class ViewRoutes : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
 
         lateinit var lista: RecyclerView
         lateinit var adaptador:RecyclerView_Adapter_Routes
-        lateinit var ruta:Route
+        lateinit var ruta: Route
         var archived = ArrayList<Route>()
         var position: Int = 0
 
@@ -83,7 +86,10 @@ class ViewRoutes : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
 
                     return false
                 }
-
+                    /*
+                    * FIXME
+                    *  poner el swipe para el usuario
+                    * */
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
                     position = viewHolder.adapterPosition
@@ -122,7 +128,8 @@ class ViewRoutes : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
                         ))
                         .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
                         .addSwipeRightBackgroundColor(ContextCompat.getColor(this@ViewRoutes,
-                            R.color.Viridian_Green))
+                            R.color.Viridian_Green
+                        ))
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24)
                         .create()
                         .decorate()
@@ -142,7 +149,7 @@ class ViewRoutes : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
         override fun onNavigationItemSelected(item: MenuItem): Boolean {
             when (item.itemId){
                 R.id.nav_logout -> {
-                    Toast.makeText(this, "Log out", Toast.LENGTH_SHORT).show()
+                   Toast.makeText(this, "Log out", Toast.LENGTH_SHORT).show()
                     val i = Intent(this, Login::class.java)
                     startActivity(i)
                     finish()

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbarStyle="outsideOverlay"
+    tools:context=".ApplicationActivity"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bgc">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TableRow>
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_span="1"
+                        android:background="@drawable/default_country"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:stretchColumns="1">
+
+                        <TableRow>
+
+                            <TextView
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="28dp"
+                                android:layout_span="3"
+                                android:text="Añadir Ruta"
+                                android:textColor="#0C0C0C"
+                                android:textSize="27sp"
+                                android:textStyle="bold"
+                                tools:ignore="RtlCompat" />
+                        </TableRow>
+
+                        <TableRow>
+
+                            <TextView
+                                android:layout_width="280dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_span="3"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:stretchColumns="1"
+                                android:textAlignment="viewStart"
+                                android:textColor="#0C0C0C"
+                                android:textSize="10sp"
+                                tools:ignore="RtlCompat" />
+                        </TableRow>
+                    </TableLayout>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Nombre Ruta"
+                        android:textColor="#0C0C0C"
+                        android:textSize="15sp"
+                        tools:ignore="RtlCompat" />
+
+                    <LinearLayout
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/outlinedTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_weight="1"
+                            android:hint="Destino"
+                            android:textColorHint="#000000">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_column="1"
+                                android:layout_marginLeft="0dp"
+                                android:textColor="#000000" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Aeropuertos"
+                        android:textColor="#0C0C0C"
+                        android:textSize="15sp"
+                        tools:ignore="RtlCompat" />
+
+                    <LinearLayout
+                        android:layout_column="1"
+                        android:layout_weight="4"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:layout_weight="2"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextField6"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="0dp"
+                                android:layout_weight="1"
+
+                                android:hint="Salida"
+                                android:textColorHint="#000000">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/spinnerSalida"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:editable="false"
+                                    android:textColor="#000000" />
+
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/outlinedTextField3"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:hint="Street Address Line 2"
+                            android:textColorHint="#000000"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:layout_weight="2"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextField7"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="0dp"
+                                android:layout_weight="1"
+
+                                android:hint="LLegada"
+                                android:textColorHint="#000000">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/spinnerCountryID"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:editable="false"
+                                    android:textColor="#000000" />
+
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="15dp"
+                            android:text="Duracion"
+                            android:textColor="#0C0C0C"
+                            android:textSize="15sp"
+                            tools:ignore="RtlCompat" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="5dp"
+                            android:text="del Viaje"
+                            android:textColor="#0C0C0C"
+                            android:textSize="15sp"
+                            tools:ignore="RtlCompat" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_column="1"
+                        android:layout_weight="4"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/outlinedTextField123"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_weight="1"
+                            android:hint="Duracion HH:MM"
+                            android:textColorHint="#000000">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtDuracion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_column="1"
+                                android:layout_marginLeft="0dp"
+                                android:textColor="#000000" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Fecha"
+                        android:textColor="#0C0C0C"
+                        android:textSize="15sp"
+                        tools:ignore="RtlCompat" />
+
+                    <LinearLayout
+                        android:layout_column="1"
+                        android:layout_weight="4"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:layout_weight="4"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextField12"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="0dp"
+                                android:hint="Pick a date"
+                                android:textColorHint="#000000">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/dataPicker"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_column="1"
+                                    android:focusable="false"
+                                    android:textColor="#000000" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </TableRow>
+
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="40dp"
+                        android:text="Envar"
+                        android:textColor="#0C0C0C"
+                        android:textSize="15sp"
+                        tools:ignore="RtlCompat" />
+
+                    <LinearLayout
+                        android:layout_column="1"
+                        android:layout_weight="4"
+                        android:orientation="horizontal">
+
+                        <!--FIXME cambiar la imagen-->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:layout_width="230dp"
+                            android:layout_height="35dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/login_btn"
+                            android:onClick="send"
+                            android:text="Enviar"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/main_drawer_activity" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

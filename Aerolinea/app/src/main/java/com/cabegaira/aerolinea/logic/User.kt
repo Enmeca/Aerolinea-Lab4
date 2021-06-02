@@ -1,4 +1,4 @@
-package com.cabegaira.aerolinea
+package com.cabegaira.aerolinea.logic
 
 import java.io.Serializable
 

@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 import com.cabegaira.aerolinea.R
-import com.cabegaira.aerolinea.Route
+import com.cabegaira.aerolinea.logic.Route
 
 import kotlin.collections.ArrayList
 

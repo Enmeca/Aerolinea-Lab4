@@ -1,11 +1,17 @@
-package com.cabegaira.aerolinea
+package com.cabegaira.aerolinea.data
+
+import com.cabegaira.aerolinea.R
+import com.cabegaira.aerolinea.logic.Route
 
 class Routes {
     private var routes : ArrayList<Route> = ArrayList<Route>()
 
     init{
-        addRoute(Route("Grecia","Costa Rica","Grecia","24/02/2022","9 Horas",
-                        R.drawable.grecia))
+        addRoute(
+            Route("Grecia","Costa Rica","Grecia","24/02/2022","9 Horas",
+                        R.drawable.grecia
+            )
+        )
     }
 
     private object HOLDER {
@@ -29,11 +35,11 @@ class Routes {
         routes!!.removeAt(position)
     }
 
-    fun editJob(position: Int, route: Route){
+    fun editRoute(position: Int, route: Route){
         routes!![position] = route
 
     }
-    fun getJob(position: Int) : Route{
+    fun getRoute(position: Int) : Route {
         return this.routes!![position]
     }
 }

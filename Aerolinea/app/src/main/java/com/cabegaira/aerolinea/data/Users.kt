@@ -1,4 +1,6 @@
-package com.cabegaira.aerolinea
+package com.cabegaira.aerolinea.data
+
+import com.cabegaira.aerolinea.logic.User
 
 class Users private constructor() {
 

@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.cabegaira.aerolinea.data.Users
+import com.cabegaira.aerolinea.logic.User
 
 class CreateUser : AppCompatActivity() {
 
