@@ -9,7 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.cabegaira.aerolinea.CRUD.Rutas.ViewRoutes
+import com.cabegaira.aerolinea.CRUD.Rutas.CreateRoute
+import com.cabegaira.aerolinea.CRUD.Rutas.UserRoutes
 import com.cabegaira.aerolinea.logic.User
 import com.google.android.material.navigation.NavigationView
 
@@ -42,12 +43,12 @@ class MainMenu : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         when (item.itemId){
             R.id.nav_rutas -> {
                 Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show()
-                val i = Intent(this, ViewRoutes::class.java)
+                val i = Intent(this, UserRoutes::class.java)
                 startActivity(i)
             }
             R.id.nav_viajes -> {
                 Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show()
-                val i = Intent(this, Login::class.java)
+                val i = Intent(this, CreateRoute::class.java)
                 startActivity(i)
             }
             R.id.nav_logout -> {

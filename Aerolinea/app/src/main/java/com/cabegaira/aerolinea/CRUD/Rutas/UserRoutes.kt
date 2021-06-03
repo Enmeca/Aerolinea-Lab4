@@ -25,7 +25,8 @@ import com.cabegaira.aerolinea.adapters.RecyclerView_Adapter_Routes
 import com.cabegaira.aerolinea.data.Routes
 import com.cabegaira.aerolinea.logic.Route
 
-class ViewRoutes : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+class UserRoutes : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 
         var trips: Routes = Routes.instance
@@ -122,12 +123,12 @@ class ViewRoutes : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
 
                 override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
 
-                    RecyclerViewSwipeDecorator.Builder(this@ViewRoutes, c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(this@ViewRoutes,
+                    RecyclerViewSwipeDecorator.Builder(this@UserRoutes, c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(this@UserRoutes,
                             R.color.Ruby_Red
                         ))
                         .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
-                        .addSwipeRightBackgroundColor(ContextCompat.getColor(this@ViewRoutes,
+                        .addSwipeRightBackgroundColor(ContextCompat.getColor(this@UserRoutes,
                             R.color.Viridian_Green
                         ))
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24)

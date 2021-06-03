@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarStyle="outsideOverlay"
-    tools:context=".ApplicationActivity"
+    tools:context=".CRUD.Rutas.CRUDRutas"
     >
 
     <ScrollView
@@ -28,6 +28,7 @@
                 <TableRow>
 
                     <ImageButton
+                        android:id="@+id/ivFoto"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginTop="0dp"
@@ -197,7 +198,7 @@
                                 android:textColorHint="#000000">
 
                                 <AutoCompleteTextView
-                                    android:id="@+id/spinnerCountryID"
+                                    android:id="@+id/spinnerLlegado"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"

@@ -30,9 +30,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import java.util.*
 
-class CreateRoute : AppCompatActivity(){
+
+class EditRoute : AppCompatActivity() {
 
     var rutas: Routes = Routes.instance
+
+    var dato: Route? = null
+    private var pos:Int = -1
 
     private lateinit var etOrigin: AutoCompleteTextView
     private lateinit var etDestiny: AutoCompleteTextView
@@ -40,21 +44,35 @@ class CreateRoute : AppCompatActivity(){
     private var etName: EditText? = null
     private var etDuration: EditText? = null
     private var etDate: EditText? = null
+    private var etPosition: EditText? = null
 
-    private var etfoto: ImageButton? = null
+    private var etfoto:ImageButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_route_activity)
 
+        dato = intent.getSerializableExtra("dato") as Route?
+        pos = intent.getSerializableExtra("position") as Int
+
         etOrigin = findViewById<AutoCompleteTextView>(R.id.spinnerSalida)
+        etOrigin!!.setText(dato!!.Origin)
+
         etDestiny = findViewById<AutoCompleteTextView>(R.id.spinnerLlegado)
+        etDestiny!!.setText(dato!!.Destiny)
 
         etName = findViewById<View>(R.id.txtName) as EditText
+        etName!!.setText(dato!!.Name)
+
         etDuration = findViewById<View>(R.id.txtDuracion) as EditText
+        etDuration!!.setText(dato!!.Duration)
 
         etDate = findViewById<View>(R.id.dataPicker) as EditText
+        etDate!!.setText(dato!!.ExitDate)
         etDate!!.setOnClickListener { showDateDialog(etDate) }
+
+        etfoto = findViewById<View>(R.id.ivFoto) as ImageButton
+        etfoto!!.setBackgroundResource(dato!!.Foto)
 
         val countries = arrayOf(
             "Afghanistan",
@@ -309,7 +327,7 @@ class CreateRoute : AppCompatActivity(){
     }
 
     fun send(view: View?) {
-
+        
         val name = etName!!.text.toString()
         val origin = etOrigin!!.text.toString()
         val destiny = etDestiny!!.text.toString()
@@ -321,11 +339,10 @@ class CreateRoute : AppCompatActivity(){
             destiny,
             exitDate,
             duration,
-            R.drawable.banner_main
+            dato!!.Foto
         )
-        rutas.addRoute(ruta)
-
-        Toast.makeText(this, "Añadido Exitosamente", Toast.LENGTH_SHORT).show()
+        rutas.editRoute(pos,ruta)
+        Toast.makeText(this, "Editado Exitosamente", Toast.LENGTH_SHORT).show()
     }
 
 
@@ -340,7 +357,7 @@ class CreateRoute : AppCompatActivity(){
             date_in!!.setText(simpleDateFormat.format(calendar.time))
         }
         DatePickerDialog(
-            this@CreateRoute,
+            this@EditRoute,
             dateSetListener,
             calendar[Calendar.YEAR],
             calendar[Calendar.MONTH],

@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Aerolinea">
-    <activity android:name=".CRUD.Rutas.ViewRoutes"/>
+    <activity android:name=".CRUD.Rutas.UserRoutes"/>
+
+    <activity android:name=".CRUD.Rutas.CreateRoute"/>
+
     <activity android:name=".ChangePass"/>
     <activity android:name=".CreateUser" />
 
