@@ -18,13 +18,13 @@
 
         <LinearLayout
             android:background="@color/main_bgc"
-            android:id="@+id/country_content_id"
+            android:id="@+id/tickets_content_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.SearchView
-                android:id="@+id/country_search"
+                android:id="@+id/ticket_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textCursorDrawable="@null"

@@ -1,4 +1,4 @@
-package com.cabegaira.aerolinea.CRUD.Country
+package com.cabegaira.aerolinea.CRUD.Airplane
 
 import android.content.Intent
 import android.graphics.Canvas
@@ -19,23 +19,23 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import java.util.*
 import kotlin.collections.ArrayList
 
-import com.cabegaira.aerolinea.adapters.RecyclerView_Adapter_Country
+import com.cabegaira.aerolinea.adapters.RecyclerView_Adapter_Airplane
 
 
 import com.cabegaira.aerolinea.Login
 import com.cabegaira.aerolinea.R
-import com.cabegaira.aerolinea.logic.Country
-import com.cabegaira.aerolinea.data.Countries
+import com.cabegaira.aerolinea.logic.Airplane
+import com.cabegaira.aerolinea.data.Airplanes
 
-class CRUDCountry : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 
-        var INSTANCIA: Countries = Countries.instance
+        var INSTANCIA: Airplanes = Airplanes.instance
 
         lateinit var lista: RecyclerView
-        lateinit var adaptador: RecyclerView_Adapter_Country
-        lateinit var ruta: Country
-        var archived = ArrayList<Country>()
+        lateinit var adaptador: RecyclerView_Adapter_Airplane
+        lateinit var ruta: Airplane
+        var archived = ArrayList<Airplane>()
         var position: Int = 0
 
 
@@ -43,7 +43,7 @@ class CRUDCountry : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
 
-            setContentView(R.layout.list_countries_activity)
+            setContentView(R.layout.list_airplanes_activity)
 
             val navView: NavigationView = findViewById(R.id.nav_view)
 
@@ -63,7 +63,7 @@ class CRUDCountry : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
             navView.setNavigationItemSelectedListener(this)
 
-            findViewById<SearchView>(R.id.country_search).setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            findViewById<SearchView>(R.id.airplane_search).setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false
                 }
@@ -74,14 +74,14 @@ class CRUDCountry : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 }
             })
 
-            getListOfCountries()
+            getListOfAirplanes()
 
             val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.START or ItemTouchHelper.END, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
                 override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
                     val fromPosition: Int = viewHolder.adapterPosition
                     val toPosition: Int = target.adapterPosition
 
-                    Collections.swap(INSTANCIA.getCountries(), fromPosition, toPosition)
+                    Collections.swap(INSTANCIA.getAirplanes(), fromPosition, toPosition)
 
                     lista.adapter?.notifyItemMoved(fromPosition, toPosition)
 
@@ -98,7 +98,7 @@ class CRUDCountry : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
 
                     if(direction == ItemTouchHelper.LEFT){
-/*                        ruta = Country(INSTANCIA.getCountries()[position], INSTANCIA.getCountries()[position].lastName,
+/*                        ruta = Airplane(INSTANCIA.getAirplanes()[position], INSTANCIA.getAirplanes()[position].lastName,
                             jobs.getApplications()[position].streetAddress1, jobs.getApplications()[position].streetAddress2, jobs.getApplications()[position].city, jobs.getApplications()[position].state, jobs.getApplications()[position].postal, jobs.getApplications()[position].country, jobs.getApplications()[position].email, jobs.getApplications()[position].areaCode, jobs.getApplications()[position].phone, jobs.getApplications()[position].position, jobs.getApplications()[position].date)
                         jobs.deleteJob(position)
                         lista.adapter?.notifyItemRemoved(position)
@@ -109,28 +109,28 @@ class CRUDCountry : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                         }.show()
                         adaptador = RecyclerView_Adapter(jobs.getApplications())
                         lista.adapter = adaptador
-                        adaptador.notifyCountriesSetChanged()*/
+                        adaptador.notifyAirplanesSetChanged()*/
                     }else{
                         /*val intent = Intent(this@CRUDJobs, EditAplication::class.java)
                         val item = jobs.getJob(position)
                         intent.putExtra("dato", item )
                         intent.putExtra("position",position)
                         startActivity(intent)
-                        adaptador.notifyCountriesSetChanged()
+                        adaptador.notifyAirplanesSetChanged()
                         //getListOfPersons()*/
                     }
                 }
 
                 override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
 
-                    RecyclerViewSwipeDecorator.Builder(this@CRUDCountry, c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    RecyclerViewSwipeDecorator.Builder(this@CRUDAirplane, c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
                         .addSwipeLeftBackgroundColor(
-                            ContextCompat.getColor(this@CRUDCountry,
+                            ContextCompat.getColor(this@CRUDAirplane,
                             R.color.Ruby_Red
                         ))
                         .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
                         .addSwipeRightBackgroundColor(
-                            ContextCompat.getColor(this@CRUDCountry,
+                            ContextCompat.getColor(this@CRUDAirplane,
                             R.color.Viridian_Green))
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24)
                         .create()
@@ -160,12 +160,12 @@ class CRUDCountry : AppCompatActivity(), NavigationView.OnNavigationItemSelected
             return true
         }
 
-        private fun getListOfCountries() {
-            val Nrutas = ArrayList<Country>()
-            for (p in INSTANCIA.getCountries()) {
+        private fun getListOfAirplanes() {
+            val Nrutas = ArrayList<Airplane>()
+            for (p in INSTANCIA.getAirplanes()) {
                 Nrutas.add(p)
             }
-            adaptador = RecyclerView_Adapter_Country(Nrutas)
+            adaptador = RecyclerView_Adapter_Airplane(Nrutas)
             lista.adapter = adaptador
         }
 

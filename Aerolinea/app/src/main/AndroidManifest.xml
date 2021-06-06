@@ -10,9 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Aerolinea">
     <activity android:name=".CRUD.Rutas.UserRoutes"/>
-
     <activity android:name=".CRUD.Rutas.CreateRoute"/>
-
     <activity android:name=".ChangePass"/>
     <activity android:name=".CreateUser" />
 
@@ -28,6 +26,18 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
+
+
+
+    <activity android:name=".CRUD.AirplaneType.CRUDAirType"/>
+    <activity android:name=".CRUD.City.CRUDCity"/>
+    <activity android:name=".CRUD.Airplane.CRUDAirplane"/>
+    <activity android:name=".CRUD.Country.CRUDCountry"/>
+    <activity android:name=".CRUD.Rutas.CRUDRutas"/>
+    <activity android:name=".CRUD.Flight.CRUDFlight"/>
+    <activity android:name=".CRUD.Schedule.CRUDSchedule"/>
+    <activity android:name=".CRUD.Reservation.CRUDReservation"/>
+    <activity android:name=".CRUD.Tickets.CRUDTickets"/>
 
     </application>
 </manifest>
