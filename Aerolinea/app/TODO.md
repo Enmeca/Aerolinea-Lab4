@@ -1,15 +1,5 @@
-#TODO
-#Vistas
-Vistas para aviones y tipo de aviones 
--las demas
+# TODO
 
-#logica
-
-Horarios
-Reserva - Incluye user
-Vuelos - Inlcuye ruta 
-
-* ultima
-
-tickets - Inclye Reserva y Vuelo
-
+* Templates de lasv view
+    * todas estan desactualizadas y en el adapter no se tiene linkiado el objeto
+    
