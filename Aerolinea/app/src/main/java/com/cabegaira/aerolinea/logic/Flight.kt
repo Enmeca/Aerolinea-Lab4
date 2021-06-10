@@ -1,9 +1,11 @@
 package com.cabegaira.aerolinea.logic
 
+import java.io.Serializable
+
 // f_id number not null, ruta varchar2(20), departure_date date, 
 //                       return_date date, price number, available_seats number)
 
-class Flight {
+class Flight : Serializable {
 
     var f_id:Int=0
     var ruta:String=""

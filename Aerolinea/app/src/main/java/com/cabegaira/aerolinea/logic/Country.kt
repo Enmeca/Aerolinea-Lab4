@@ -1,6 +1,8 @@
 package com.cabegaira.aerolinea.logic
 
-class Country {
+import java.io.Serializable
+
+class Country : Serializable {
     var name:String = ""
     var id:String = ""
 

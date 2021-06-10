@@ -1,9 +1,11 @@
 package com.cabegaira.aerolinea.logic
 
+import java.io.Serializable
+
 // res_id number not null, userid number, totalPrice number, seatQuantity number) tablespace system; 
 
 
-class Reservation {
+class Reservation : Serializable {
     var res_id:Int=0
     var User_id:Int=0
     var totalPrice:Int=0

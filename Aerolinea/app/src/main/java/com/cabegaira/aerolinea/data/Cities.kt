@@ -16,6 +16,15 @@ class Cities {
                 "Costa Rica"
             )
         )
+
+        addCity(
+            City(
+                "California",
+                "CAL",
+                "Estados Unidos"
+            )
+        )
+
     }
 
     private object HOLDER {

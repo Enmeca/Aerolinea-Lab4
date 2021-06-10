@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import java.util.*
 import kotlin.collections.ArrayList
@@ -99,8 +100,8 @@ import com.cabegaira.aerolinea.data.Routes
 
 
                     if(direction == ItemTouchHelper.LEFT){
-/*                        ruta = Route(trips.getRoutes()[position], trips.getRoutes()[position].lastName,
-                            jobs.getApplications()[position].streetAddress1, jobs.getApplications()[position].streetAddress2, jobs.getApplications()[position].city, jobs.getApplications()[position].state, jobs.getApplications()[position].postal, jobs.getApplications()[position].country, jobs.getApplications()[position].email, jobs.getApplications()[position].areaCode, jobs.getApplications()[position].phone, jobs.getApplications()[position].position, jobs.getApplications()[position].date)
+/*                      ruta = Route(trips.getRoutes()[position], trips.getRoutes()[position].lastName,
+                        jobs.getApplications()[position].streetAddress1, jobs.getApplications()[position].streetAddress2, jobs.getApplications()[position].city, jobs.getApplications()[position].state, jobs.getApplications()[position].postal, jobs.getApplications()[position].country, jobs.getApplications()[position].email, jobs.getApplications()[position].areaCode, jobs.getApplications()[position].phone, jobs.getApplications()[position].position, jobs.getApplications()[position].date)
                         jobs.deleteJob(position)
                         lista.adapter?.notifyItemRemoved(position)
 
@@ -112,13 +113,13 @@ import com.cabegaira.aerolinea.data.Routes
                         lista.adapter = adaptador
                         adaptador.notifyDataSetChanged()*/
                     }else{
-                        /*val intent = Intent(this@CRUDJobs, EditAplication::class.java)
-                        val item = jobs.getJob(position)
-                        intent.putExtra("dato", item )
+                        val intent = Intent(this@CRUDRutas, EditRoute::class.java)
+                        val itemr = trips.getRoute(position)
+                        intent.putExtra("dato", itemr )
                         intent.putExtra("position",position)
                         startActivity(intent)
                         adaptador.notifyDataSetChanged()
-                        //getListOfPersons()*/
+                        //getListOfPersons()
                     }
                 }
 

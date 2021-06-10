@@ -1,10 +1,12 @@
 package com.cabegaira.aerolinea.logic
 
+import java.io.Serializable
+
 /*
 at_id varchar2(45), year number, model varchar2(20),
 brand varchar2(20), passengers_quantity number,
 rows_number number, columns_number number)*/
-class AirplaneType {
+class AirplaneType : Serializable {
         var at_id:String =""
         var model:String =""
         var brand:String =""

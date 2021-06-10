@@ -1,9 +1,11 @@
 package com.cabegaira.aerolinea.logic
 
+import java.io.Serializable
+
 
 // id number not null,
 //                         departure_time date, arrival_time date
-class Schedule {
+class Schedule : Serializable {
     var id:Int=0
     var departure_time:String="0/0/0"
     var arrival_time:String="0/0/0"

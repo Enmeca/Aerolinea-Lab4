@@ -32,6 +32,8 @@ class CRUDAirType : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     var INSTANCIA: Airtypes = Airtypes.instance
 
+
+
     lateinit var lista: RecyclerView
     lateinit var adaptador: RecyclerView_Adapter_AirplaneType
     lateinit var ruta: AirplaneType

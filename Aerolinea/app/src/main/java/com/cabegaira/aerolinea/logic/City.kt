@@ -1,6 +1,8 @@
 package com.cabegaira.aerolinea.logic
 
-class City {
+import java.io.Serializable
+
+class City : Serializable {
     var name:String = ""
     var Id:String = ""
     //FIXME ver si agregar la referencia como int para bucar la pos o el objeto

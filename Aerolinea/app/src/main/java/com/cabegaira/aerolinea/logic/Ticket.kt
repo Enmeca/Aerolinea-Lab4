@@ -1,9 +1,11 @@
 package com.cabegaira.aerolinea.logic
 
+import java.io.Serializable
+
 // create table ticket(ticket_id number not null, fila number, 
 // col number, reservation number, flight number) tablespace system;
 
-class Ticket {
+class Ticket: Serializable {
 
     var ticket_id:Int=0
     var fila:Int=0

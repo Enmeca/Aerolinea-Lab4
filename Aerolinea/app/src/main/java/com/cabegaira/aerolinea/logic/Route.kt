@@ -1,7 +1,9 @@
 package com.cabegaira.aerolinea.logic
 
+import java.io.Serializable
 
-class Route {
+
+class Route : Serializable {
     
     var Name:String = " "
 

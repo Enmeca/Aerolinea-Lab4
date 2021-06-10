@@ -34,6 +34,8 @@
     <activity android:name=".CRUD.Airplane.CRUDAirplane"/>
     <activity android:name=".CRUD.Country.CRUDCountry"/>
     <activity android:name=".CRUD.Rutas.CRUDRutas"/>
+        <activity android:name=".CRUD.Rutas.EditRoute"/>
+
     <activity android:name=".CRUD.Flight.CRUDFlight"/>
     <activity android:name=".CRUD.Schedule.CRUDSchedule"/>
     <activity android:name=".CRUD.Reservation.CRUDReservation"/>
