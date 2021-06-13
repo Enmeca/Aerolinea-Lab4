@@ -4,7 +4,7 @@ import com.cabegaira.aerolinea.R
 import com.cabegaira.aerolinea.logic.Flight
 
 class Flights {
-    private var Flights : ArrayList<Flight> = ArrayList<Flight>()
+    private var flights : ArrayList<Flight> = ArrayList<Flight>()
 
     init{
         addFlight(
@@ -20,8 +20,58 @@ class Flights {
                 "24/02/2021",
                 "13/05/2021",
                 650,
-                120
+                120,
+                R.drawable.greeceflag
             )
+
+        )
+        addFlight(
+            Flight(
+                2,
+                "Costa Rica - Alemania",
+                "17/03/2021",
+                "30/03/2021",
+                1000,
+                145,
+                R.drawable.germanyflag
+            )
+
+        )
+        addFlight(
+            Flight(
+                3,
+                "Costa Rica - Japon",
+                "20/04/2021",
+                "30/04/2021",
+                1200,
+                130,
+                R.drawable.japanflag
+            )
+
+        )
+        addFlight(
+            Flight(
+                4,
+                "Costa Rica - Estados Unidos",
+                "17/03/2021",
+                "30/03/2021",
+                800,
+                145,
+                R.drawable.usaflag
+            )
+
+        )
+        addFlight(
+            Flight(
+                5,
+                "Costa Rica - Francia",
+                "05/05/2021",
+                "15/05/2021",
+                1000,
+                145,
+                R.drawable.franceflag
+            )
+
         )
     }
 
@@ -36,21 +86,21 @@ class Flights {
     }
 
     fun addFlight(app: Flight){
-        Flights?.add(app)
+        flights?.add(app)
     }
 
     fun getFlights(): ArrayList<Flight>{
-        return this.Flights!!
+        return this.flights!!
     }
     fun deleteFlights(position: Int){
-        Flights!!.removeAt(position)
+        flights!!.removeAt(position)
     }
 
     fun editFlight(position: Int, Flight: Flight){
-        Flights!![position] = Flight
+        flights!![position] = Flight
 
     }
     fun getFlight(position: Int) : Flight {
-        return this.Flights!![position]
+        return this.flights!![position]
     }
 }

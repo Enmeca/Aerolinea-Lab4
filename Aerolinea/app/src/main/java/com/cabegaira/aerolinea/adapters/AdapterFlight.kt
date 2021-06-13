@@ -2,6 +2,7 @@ package com.cabegaira.aerolinea.adapters
 
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.cabegaira.aerolinea.Login
 
 import com.cabegaira.aerolinea.R
 import com.cabegaira.aerolinea.logic.Flight
@@ -42,16 +44,17 @@ class RecyclerView_Adapter_Flight(private var items: ArrayList<Flight>): Recycle
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = itemsList?.get(position)
-/*        holder.itemView.findViewById<TextView>(R.id.tvNombre)?.text = item?.Name
-        holder.itemView.findViewById<TextView>(R.id.tvFecha)?.text = item?.ExitDate
-        holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)*/
-
-        /*holder.itemView.setOnClickListener {
-            val intent = Intent(this.mcontext, EditAplication::class.java)
+        holder.itemView.findViewById<TextView>(R.id.tvNombre)?.text = item?.ruta
+        holder.itemView.findViewById<TextView>(R.id.tvPrecio)?.text = item?.price.toString()
+        holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)
+        holder.itemView.findViewById<ImageView>(R.id.ivPrice).setImageResource(R.drawable.dollar)
+        //holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(this.mcontext, Login::class.java)
             intent.putExtra("dato", item)
             intent.putExtra("position",position)
             this.mcontext.startActivity(intent)
-        }*/
+        }
     }
 
 

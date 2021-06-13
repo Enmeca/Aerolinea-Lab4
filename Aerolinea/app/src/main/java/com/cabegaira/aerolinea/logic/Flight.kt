@@ -13,6 +13,7 @@ class Flight : Serializable {
     var return_date:String=""
     var price:Int=0
     var available_seats:Int=0
+    var Foto:Int = 0
 
     constructor(
         f_id: Int,
@@ -20,7 +21,8 @@ class Flight : Serializable {
         departure_date: String,
         return_date: String,
         price: Int,
-        available_seats: Int
+        available_seats: Int,
+        Foto : Int
     ) {
         this.f_id = f_id
         this.ruta = ruta
@@ -28,5 +30,6 @@ class Flight : Serializable {
         this.return_date = return_date
         this.price = price
         this.available_seats = available_seats
+        this.Foto = Foto
     }
 }
