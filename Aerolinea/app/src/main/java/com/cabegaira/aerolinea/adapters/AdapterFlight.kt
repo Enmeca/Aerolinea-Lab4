@@ -11,6 +11,7 @@ import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.cabegaira.aerolinea.CRUD.Tickets.TicketsSelection
 import com.cabegaira.aerolinea.Login
 
 import com.cabegaira.aerolinea.R
@@ -50,7 +51,7 @@ class RecyclerView_Adapter_Flight(private var items: ArrayList<Flight>): Recycle
         holder.itemView.findViewById<ImageView>(R.id.ivPrice).setImageResource(R.drawable.dollar)
         //holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)
         holder.itemView.setOnClickListener {
-            val intent = Intent(this.mcontext, Login::class.java)
+            val intent = Intent(this.mcontext, TicketsSelection::class.java)
             intent.putExtra("dato", item)
             intent.putExtra("position",position)
             this.mcontext.startActivity(intent)

@@ -39,6 +39,7 @@
 
     <activity android:name=".CRUD.Flight.CRUDFlight"/>
         <activity android:name=".CRUD.Flight.UserFlight"/>
+        <activity android:name=".CRUD.Tickets.TicketsSelection"/>
     <activity android:name=".CRUD.Schedule.CRUDSchedule"/>
     <activity android:name=".CRUD.Reservation.CRUDReservation"/>
     <activity android:name=".CRUD.Tickets.CRUDTickets"/>
