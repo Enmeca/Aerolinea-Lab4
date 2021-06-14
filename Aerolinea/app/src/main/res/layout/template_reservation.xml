@@ -19,7 +19,7 @@
     <!--        app:srcCompat="@drawable/job" />-->
 
     <TextView
-        android:id="@+id/tvNombre"
+        android:id="@+id/tvRuta"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -27,13 +27,23 @@
         android:text="TextView"
         android:textColor="@color/black" />
 
-<!--    <TextView
-        android:id="@+id/tvFecha"
+    <ImageView
+        android:id="@+id/ivTicket"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="0"/>
+
+     <TextView
+        android:id="@+id/tvTickets"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:text="TextView"
-        android:textColor="@color/black" />-->
+        android:textColor="@color/black" />
 
 </LinearLayout>

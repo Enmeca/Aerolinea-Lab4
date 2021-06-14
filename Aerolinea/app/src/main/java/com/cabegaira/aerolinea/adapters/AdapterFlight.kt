@@ -11,10 +11,12 @@ import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.cabegaira.aerolinea.CRUD.Flight.FlightDetail
 import com.cabegaira.aerolinea.CRUD.Tickets.TicketsSelection
 import com.cabegaira.aerolinea.Login
 
 import com.cabegaira.aerolinea.R
+import com.cabegaira.aerolinea.data.Flights
 import com.cabegaira.aerolinea.logic.Flight
 
 import kotlin.collections.ArrayList
@@ -51,7 +53,7 @@ class RecyclerView_Adapter_Flight(private var items: ArrayList<Flight>): Recycle
         holder.itemView.findViewById<ImageView>(R.id.ivPrice).setImageResource(R.drawable.dollar)
         //holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)
         holder.itemView.setOnClickListener {
-            val intent = Intent(this.mcontext, TicketsSelection::class.java)
+            val intent = Intent(this.mcontext, FlightDetail::class.java)
             intent.putExtra("dato", item)
             intent.putExtra("position",position)
             this.mcontext.startActivity(intent)
@@ -66,25 +68,13 @@ class RecyclerView_Adapter_Flight(private var items: ArrayList<Flight>): Recycle
                 if (charSearch.isEmpty()) {
                     itemsList = items
                 } else {
-                    /*val resultList = ArrayList<Routes>()
+                    val resultList = ArrayList<Flight>()
                     for (row in items) {
-                        if (row.firstName.toLowerCase().contains(charSearch.toLowerCase())) {
-                            resultList.add(row)
-                        }
-                        if (row.lastName.toLowerCase().contains(charSearch.toLowerCase())) {
-                            resultList.add(row)
-                        }
-                        if (row.position.toLowerCase().contains(charSearch.toLowerCase())) {
-                            resultList.add(row)
-                        }
-                        if (row.city.toLowerCase().contains(charSearch.toLowerCase())) {
-                            resultList.add(row)
-                        }
-                        if (row.phone.toLowerCase().contains(charSearch.toLowerCase())) {
+                        if (row.ruta.toLowerCase().contains(charSearch.toLowerCase())) {
                             resultList.add(row)
                         }
                     }
-                    itemsList = resultList*/
+                    itemsList = resultList
                 }
                 val filterResults = FilterResults()
                 filterResults.values = itemsList

@@ -2,6 +2,7 @@ package com.cabegaira.aerolinea.adapters
 
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,12 @@ import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.cabegaira.aerolinea.CRUD.Reservation.ReservationDetail
+import com.cabegaira.aerolinea.Login
 
 import com.cabegaira.aerolinea.R
 import com.cabegaira.aerolinea.logic.Reservation
+import java.util.*
 
 import kotlin.collections.ArrayList
 
@@ -42,16 +46,18 @@ class RecyclerView_Adapter_Reservation(private var items: ArrayList<Reservation>
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = itemsList?.get(position)
-/*        holder.itemView.findViewById<TextView>(R.id.tvNombre)?.text = item?.Name
-        holder.itemView.findViewById<TextView>(R.id.tvFecha)?.text = item?.ExitDate
-        holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)*/
+        holder.itemView.findViewById<TextView>(R.id.tvRuta)?.text = item?.ruta
+        //holder.itemView.findViewById<TextView>(R.id.tvFecha)?.text = item?.date
+        holder.itemView.findViewById<TextView>(R.id.tvTickets)?.text = item?.seatQuantity.toString()
+        holder.itemView.findViewById<ImageView>(R.id.ivTicket).setImageResource(R.drawable.ticket_icon)
+        holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(R.drawable.plane)
 
-        /*holder.itemView.setOnClickListener {
-            val intent = Intent(this.mcontext, EditAplication::class.java)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(this.mcontext, ReservationDetail::class.java)
             intent.putExtra("dato", item)
             intent.putExtra("position",position)
             this.mcontext.startActivity(intent)
-        }*/
+        }
     }
 
 
@@ -62,25 +68,15 @@ class RecyclerView_Adapter_Reservation(private var items: ArrayList<Reservation>
                 if (charSearch.isEmpty()) {
                     itemsList = items
                 } else {
-                    /*val resultList = ArrayList<Routes>()
+                    val resultList = ArrayList<Reservation>()
                     for (row in items) {
-                        if (row.firstName.toLowerCase().contains(charSearch.toLowerCase())) {
-                            resultList.add(row)
-                        }
-                        if (row.lastName.toLowerCase().contains(charSearch.toLowerCase())) {
-                            resultList.add(row)
-                        }
-                        if (row.position.toLowerCase().contains(charSearch.toLowerCase())) {
-                            resultList.add(row)
-                        }
-                        if (row.city.toLowerCase().contains(charSearch.toLowerCase())) {
-                            resultList.add(row)
-                        }
-                        if (row.phone.toLowerCase().contains(charSearch.toLowerCase())) {
+                        if (row.ruta.lowercase(Locale.getDefault()).contains(charSearch.lowercase(
+                                Locale.getDefault()
+                            ))) {
                             resultList.add(row)
                         }
                     }
-                    itemsList = resultList*/
+                    itemsList = resultList
                 }
                 val filterResults = FilterResults()
                 filterResults.values = itemsList

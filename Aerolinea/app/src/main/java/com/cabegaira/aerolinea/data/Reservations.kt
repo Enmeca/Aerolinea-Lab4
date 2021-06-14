@@ -11,9 +11,41 @@ class Reservations {
         addReservation(
             Reservation(
                 1,
-                117390080,
+                "Philippe Gairaud",
+                2500,
+                2,
+                "Costa Rica-Estados Unidos",
+                "24-03-2021/30-03-2021"
+            )
+        )
+        addReservation(
+            Reservation(
+                2,
+                "Philippe Gairaud",
+                3000,
+                4,
+                "Costa Rica-Japon",
+                "10-05-2021/20-05-2021"
+            )
+        )
+        addReservation(
+            Reservation(
+                3,
+                "Philippe Gairaud",
+                1600,
+                2,
+                "Costa Rica-Alemania",
+                "15-06-2021/20-06-2021"
+            )
+        )
+        addReservation(
+            Reservation(
+                4,
+                "Philippe Gairaud",
                 2000,
-                2
+                3,
+                "Costa Rica-Grecia",
+                "15-07-2021/25-07-2021"
             )
         )
     }

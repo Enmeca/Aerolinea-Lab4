@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cabegaira.aerolinea.CRUD.Reservation.CRUDReservation
 import com.google.android.material.navigation.NavigationView
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import java.util.*
@@ -155,6 +156,16 @@ class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
+            R.id.nav_vuelos -> {
+                Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show()
+                val i = Intent(this, UserFlight::class.java)
+                startActivity(i)
+            }
+            R.id.nav_viajes -> {
+                Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show()
+                val i = Intent(this, CRUDReservation::class.java)
+                startActivity(i)
+            }
             R.id.nav_logout -> {
                 Toast.makeText(this, "Log out", Toast.LENGTH_SHORT).show()
                 val i = Intent(this, Login::class.java)

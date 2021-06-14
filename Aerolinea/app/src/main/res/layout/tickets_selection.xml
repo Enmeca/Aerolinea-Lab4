@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
     android:background="@android:color/white"
+    android:clickable="true"
     android:foreground="?attr/selectableItemBackground"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,18 +18,19 @@
 
         <TextView
             android:id="@+id/tvMensaje"
-            android:layout_width="434dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center"
             android:text="Seleccion de asientos"
-            android:textColor="#009688"
-            android:textSize="34sp"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:textStyle="bold" />
+
         <TextView
-            android:id="@+id/tvCantidad"
+            android:id="@+id/tvRuta"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -37,15 +38,15 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center"
             android:text=""
-            android:textColor="#009688"
-            android:textSize="34sp"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="416dp"
+        android:layout_height="459dp"
         android:layout_row="3"
         android:layout_column="0">
 
@@ -56,7 +57,18 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:orientation="vertical">
+
+
         </LinearLayout>
 
     </ScrollView>
-</GridLayout>
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirmar"
+        app:backgroundTint="#4CAF50" />
+
+
+</LinearLayout>

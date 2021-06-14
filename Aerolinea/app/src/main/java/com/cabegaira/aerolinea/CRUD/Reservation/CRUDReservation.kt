@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cabegaira.aerolinea.CRUD.Flight.UserFlight
 import com.google.android.material.navigation.NavigationView
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import java.util.*
@@ -92,73 +93,91 @@ class CRUDReservation : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 *  poner el swipe para el usuario
                 * */
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
-                    position = viewHolder.adapterPosition
-                    var quien: String = ""
-
-
-                    if(direction == ItemTouchHelper.LEFT){
-/*                        ruta = Reservation(INSTANCIA.getReservations()[position], INSTANCIA.getReservations()[position].lastName,
-                            jobs.getApplications()[position].streetAddress1, jobs.getApplications()[position].streetAddress2, jobs.getApplications()[position].city, jobs.getApplications()[position].state, jobs.getApplications()[position].postal, jobs.getApplications()[position].country, jobs.getApplications()[position].email, jobs.getApplications()[position].areaCode, jobs.getApplications()[position].phone, jobs.getApplications()[position].position, jobs.getApplications()[position].date)
-                        jobs.deleteJob(position)
-                        lista.adapter?.notifyItemRemoved(position)
-
-                        Snackbar.make(lista, aplication.firstName + "Se eliminaría... ", Snackbar.LENGTH_LONG).setAction("Undo") {
-                            jobs.getApplications().add(position, aplication)
-                            lista.adapter?.notifyItemInserted(position)
-                        }.show()
-                        adaptador = RecyclerView_Adapter(jobs.getApplications())
-                        lista.adapter = adaptador
-                        adaptador.notifyReservationsSetChanged()*/
-                    }else{
-                        /*val intent = Intent(this@CRUDJobs, EditAplication::class.java)
-                        val item = jobs.getJob(position)
-                        intent.putExtra("dato", item )
-                        intent.putExtra("position",position)
-                        startActivity(intent)
-                        adaptador.notifyReservationsSetChanged()
-                        //getListOfPersons()*/
-                    }
+                    TODO("Not yet implemented")
                 }
+                /*
+                * FIXME
+                *  poner el swipe para el usuario
+                * */
 
-                override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+                /* override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
-                    RecyclerViewSwipeDecorator.Builder(this@CRUDReservation, c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                     position = viewHolder.adapterPosition
+                     var quien: String = ""
+
+
+                     if(direction == ItemTouchHelper.LEFT){
+     /*                        ruta = Flight(INSTANCIA.getFlights()[position], INSTANCIA.getFlights()[position].lastName,
+                                 jobs.getApplications()[position].streetAddress1, jobs.getApplications()[position].streetAddress2, jobs.getApplications()[position].city, jobs.getApplications()[position].state, jobs.getApplications()[position].postal, jobs.getApplications()[position].country, jobs.getApplications()[position].email, jobs.getApplications()[position].areaCode, jobs.getApplications()[position].phone, jobs.getApplications()[position].position, jobs.getApplications()[position].date)
+                             jobs.deleteJob(position)
+                             lista.adapter?.notifyItemRemoved(position)
+
+                             Snackbar.make(lista, aplication.firstName + "Se eliminaría... ", Snackbar.LENGTH_LONG).setAction("Undo") {
+                                 jobs.getApplications().add(position, aplication)
+                                 lista.adapter?.notifyItemInserted(position)
+                             }.show()
+                             adaptador = RecyclerView_Adapter(jobs.getApplications())
+                             lista.adapter = adaptador
+                             adaptador.notifyFlightsSetChanged()*/
+                     }else{
+                         /*val intent = Intent(this@CRUDJobs, EditAplication::class.java)
+                         val item = jobs.getJob(position)
+                         intent.putExtra("dato", item )
+                         intent.putExtra("position",position)
+                         startActivity(intent)
+                         adaptador.notifyFlightsSetChanged()
+                         //getListOfPersons()*/
+                     }
+                 }*/
+
+                /*override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+
+                    RecyclerViewSwipeDecorator.Builder(this@UserFlight, c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
                         .addSwipeLeftBackgroundColor(
-                            ContextCompat.getColor(this@CRUDReservation,
-                            R.color.Ruby_Red
-                        ))
+                            ContextCompat.getColor(this@UserFlight,
+                                R.color.Ruby_Red
+                            ))
                         .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
                         .addSwipeRightBackgroundColor(
-                            ContextCompat.getColor(this@CRUDReservation,
-                            R.color.Viridian_Green))
+                            ContextCompat.getColor(this@UserFlight,
+                                R.color.Viridian_Green))
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24)
                         .create()
                         .decorate()
                     super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                }
+                }*/
 
             }
 
 
 
-            val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-            itemTouchHelper.attachToRecyclerView(lista)
+            /*val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+            itemTouchHelper.attachToRecyclerView(lista)*/
 
 
         }
 
-        override fun onNavigationItemSelected(item: MenuItem): Boolean {
-            when (item.itemId){
-                R.id.nav_logout -> {
-                    Toast.makeText(this, "Log out", Toast.LENGTH_SHORT).show()
-                    val i = Intent(this, Login::class.java)
-                    startActivity(i)
-                    finish()
-                }
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.nav_vuelos -> {
+                Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show()
+                val i = Intent(this, UserFlight::class.java)
+                startActivity(i)
             }
-            return true
+            R.id.nav_viajes -> {
+                Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show()
+                val i = Intent(this, CRUDReservation::class.java)
+                startActivity(i)
+            }
+            R.id.nav_logout -> {
+                Toast.makeText(this, "Log out", Toast.LENGTH_SHORT).show()
+                val i = Intent(this, Login::class.java)
+                startActivity(i)
+                finish()
+            }
         }
+        return true
+    }
 
         private fun getListOfReservations() {
             val Nrutas = ArrayList<Reservation>()
