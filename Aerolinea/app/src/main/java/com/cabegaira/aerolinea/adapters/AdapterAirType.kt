@@ -41,7 +41,7 @@ class RecyclerView_Adapter_AirplaneType(private var items: ArrayList<AirplaneTyp
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = itemsList?.get(position)
-        holder.itemView.findViewById<TextView>(R.id.tvNombre)?.text = item?.at_id
+        holder.itemView.findViewById<TextView>(R.id.tvNombre)?.text = item?.id
         holder.itemView.findViewById<TextView>(R.id.tvFecha)?.text = item?.brand
         holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(R.drawable.default_country)
 

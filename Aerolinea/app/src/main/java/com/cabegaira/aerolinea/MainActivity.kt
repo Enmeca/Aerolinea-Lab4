@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cabegaira.aerolinea.data.Airtypes
+import com.cabegaira.aerolinea.logic.Airplane
 import com.cabegaira.aerolinea.logic.AirplaneType
 import com.neovisionaries.ws.client.WebSocket
 import com.neovisionaries.ws.client.WebSocketAdapter
@@ -14,12 +15,15 @@ import kotlinx.coroutines.CoroutineScope
 import org.json.JSONArray
 import org.json.JSONTokener
 
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
 class MainActivity : AppCompatActivity() {
     var ws: WebSocket? = null
     var factory : WebSocketFactory? =null
+    var gson:Gson = Gson()
+
     var types:Airtypes = Airtypes.instance
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,16 +35,20 @@ class MainActivity : AppCompatActivity() {
 
         }
         try {
-            ws = factory?.createSocket("ws://52.167.232.76:9393/controllertypes")
+            ws = factory?.createSocket("ws://52.167.232.76:9393/controllerplanes")
 
             ws?.addListener( object: WebSocketAdapter(){
+
                 override fun onTextMessage(websocket: WebSocket?, text: String?) {
                     super.onTextMessage(websocket, text)
                     Log.d("TESTE","ontextmesage"+text)
                     val jsonArray = JSONTokener(text).nextValue() as JSONArray
                     types.clearList()
 
-                    for (i in 0 until jsonArray.length()){
+                    val itemType = object : TypeToken<List<Airplane>>(){}.type
+                    var result: ArrayList<Airplane> = gson.fromJson(text, itemType);
+
+/*                    for (i in 0 until jsonArray.length()){
                         val svtype:AirplaneType = AirplaneType(
                         jsonArray.getJSONObject(i).getString("id"),
                         jsonArray.getJSONObject(i).getInt("year"),
@@ -52,12 +60,13 @@ class MainActivity : AppCompatActivity() {
                         )
                         types.addAirplaneType(svtype)
 
-                    }
+                    }*/
+                    Log.d("LIST",result.toString())
                 }
 
             })
 
-            ws?.connect()
+            ws?.connectAsynchronously()
 
         }catch (e:Exception){
             Log.d("errorcito", e.toString())
@@ -69,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         if(ws?.isOpen()==true){
             Log.d("boton","entra")
             val x = JSONObject()
-            x.put("action","types-list")
+            x.put("action","planes-list")
             ws?.sendText(x.toString())
         }else{
             Log.d("boton","no entro")

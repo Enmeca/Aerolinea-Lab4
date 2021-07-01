@@ -58,6 +58,6 @@ class Airtypes {
         return this.AirplaneTypes!![position]
     }
     fun clearList(){
-
+        AirplaneTypes.clear()
     }
 }

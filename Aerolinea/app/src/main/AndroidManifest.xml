@@ -33,11 +33,11 @@
 
     <activity android:name=".CRUD.AirplaneType.CRUDAirType"/>
     <activity android:name=".CRUD.City.CRUDCity"/>
-    <activity android:name=".CRUD.Airplane.CRUDAirplane"/>
+<activity android:name=".CRUD.Airplane.CRUDAirplane"/>
     <activity android:name=".CRUD.Country.CRUDCountry"/>
     <activity android:name=".CRUD.Rutas.CRUDRutas"/>
         <activity android:name=".CRUD.Rutas.EditRoute"/>
-<activity android:name=".MainActivity"/>
+<!--<activity android:name=".MainActivity"/>-->
     <activity android:name=".CRUD.Flight.CRUDFlight"/>
         <activity android:name=".CRUD.Flight.UserFlight"/>
         <activity android:name=".CRUD.Flight.FlightDetail"/>

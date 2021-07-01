@@ -8,10 +8,10 @@ import java.io.Serializable
 class Airplane : Serializable {
     var id:String=""
     //FIXME ver como vamos a manejar referencia
-    var airplaneType:Int=0
+    var type:AirplaneType? = null
 
-    constructor(id: String, airplaneType: Int) {
+    constructor(id: String, type: AirplaneType) {
         this.id = id
-        this.airplaneType = airplaneType
+        this.type = type
     }
 }

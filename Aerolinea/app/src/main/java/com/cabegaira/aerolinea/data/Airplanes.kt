@@ -10,12 +10,12 @@ class Airplanes {
 //    this.airplaneType = airplaneType
 
     init{
-        addAirplane(
+/*        addAirplane(
             Airplane(
                 "TI-666",
                 1
             )
-        )
+        )*/
     }
 
     private object HOLDER {
@@ -45,5 +45,14 @@ class Airplanes {
     }
     fun getAirplane(position: Int) : Airplane {
         return this.Airplanes!![position]
+    }
+
+    fun clearList(){
+        Airplanes.clear()
+    }
+
+    fun getData(Lista:ArrayList<Airplane>){
+        Airplanes.clear()
+        Airplanes=Lista
     }
 }
