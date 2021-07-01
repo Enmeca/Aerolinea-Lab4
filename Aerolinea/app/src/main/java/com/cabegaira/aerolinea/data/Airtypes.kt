@@ -16,7 +16,7 @@ class Airtypes {
         rows_number: Int,
         columns_number: Int*/
 
-        addAirplaneType(
+/*        addAirplaneType(
             AirplaneType(
                 "666-TI",
                 "Boing",
@@ -26,7 +26,7 @@ class Airtypes {
                 6,
                 20
             )
-        )
+        )*/
     }
 
     private object HOLDER {
@@ -56,5 +56,8 @@ class Airtypes {
     }
     fun getAirplaneType(position: Int) : AirplaneType {
         return this.AirplaneTypes!![position]
+    }
+    fun clearList(){
+
     }
 }

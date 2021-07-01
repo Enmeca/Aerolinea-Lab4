@@ -1,9 +1,13 @@
 package com.cabegaira.aerolinea.CRUD.AirplaneType
 
+
 import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
+import android.os.StrictMode
+import android.os.StrictMode.ThreadPolicy
+import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,27 +15,38 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cabegaira.aerolinea.Login
+import com.cabegaira.aerolinea.R
+import com.cabegaira.aerolinea.adapters.RecyclerView_Adapter_AirplaneType
+import com.cabegaira.aerolinea.data.Airtypes
+import com.cabegaira.aerolinea.logic.AirplaneType
+import com.cabegaira.aerolinea.websockets.Teste
 import com.google.android.material.navigation.NavigationView
+import com.neovisionaries.ws.client.WebSocket
+import com.neovisionaries.ws.client.WebSocketAdapter
+import com.neovisionaries.ws.client.WebSocketFactory
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONArray
+import org.json.JSONObject
+import org.json.JSONTokener
 import java.util.*
 import kotlin.collections.ArrayList
 
-import com.cabegaira.aerolinea.adapters.RecyclerView_Adapter_AirplaneType
 
-
-import com.cabegaira.aerolinea.Login
-import com.cabegaira.aerolinea.R
-import com.cabegaira.aerolinea.logic.AirplaneType
-import com.cabegaira.aerolinea.data.Airtypes
-
-class CRUDAirType : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class CRUDAirType : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
 
     var INSTANCIA: Airtypes = Airtypes.instance
-
+    var ws: WebSocket? = null
+    var factory : WebSocketFactory? =null
 
 
     lateinit var lista: RecyclerView
@@ -44,8 +59,21 @@ class CRUDAirType : AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val policy = ThreadPolicy.Builder()
+            .permitAll()
+            .build()
+        StrictMode.setThreadPolicy(policy)
+
+        factory = WebSocketFactory().setConnectionTimeout(5000)
+
 
         setContentView(R.layout.list_airtype_activity)
+
+/*        lifecycleScope.launch {
+
+            withContext(Dispatchers.IO){Teste.getData()}
+
+        }*/
 
         val navView: NavigationView = findViewById(R.id.nav_view)
 
@@ -75,6 +103,41 @@ class CRUDAirType : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 return false
             }
         })
+        try {
+            ws = factory?.createSocket("ws://52.167.232.76:9393/controllertypes")
+
+            ws?.addListener( object: WebSocketAdapter(){
+                override fun onTextMessage(websocket: WebSocket?, text: String?) {
+                    super.onTextMessage(websocket, text)
+                    Log.d("TESTE","ontextmesage"+text)
+                    val jsonArray = JSONTokener(text).nextValue() as JSONArray
+                    INSTANCIA.clearList()
+
+                    for (i in 0 until jsonArray.length()){
+                        val svtype: AirplaneType = AirplaneType(
+                            jsonArray.getJSONObject(i).getString("id"),
+                            jsonArray.getJSONObject(i).getInt("year"),
+                            jsonArray.getJSONObject(i).getString("model"),
+                            jsonArray.getJSONObject(i).getString("brand"),
+                            jsonArray.getJSONObject(i).getInt("passengersQuantity"),
+                            jsonArray.getJSONObject(i).getInt("rowsNumber"),
+                            jsonArray.getJSONObject(i).getInt("columnsNumber")
+                        )
+                        INSTANCIA.addAirplaneType(svtype)
+
+                    }
+                    getListOfAirtypes()
+                }
+
+            })
+
+            ws?.connect()
+
+        }catch (e:Exception) {
+            Log.d("errorcito", e.toString())
+        }finally {
+            sendMessage()
+        }
 
         getListOfAirtypes()
 
@@ -169,6 +232,17 @@ class CRUDAirType : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         }
         adaptador = RecyclerView_Adapter_AirplaneType(Nrutas)
         lista.adapter = adaptador
+    }
+
+    fun sendMessage(){
+        if(ws?.isOpen()==true){
+            Log.d("boton","entra")
+            val x = JSONObject()
+            x.put("action","types-list")
+            ws?.sendText(x.toString())
+        }else{
+            Log.d("boton","no entro")
+        }
     }
 
 }

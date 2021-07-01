@@ -5,11 +5,17 @@ import com.cabegaira.aerolinea.logic.Route
 
 class Routes {
     private var routes : ArrayList<Route> = ArrayList<Route>()
-
+    private var filtradoroutes : ArrayList<Route> = ArrayList<Route>()
     init{
         addRoute(
             Route("Grecia","Costa Rica","Grecia","24/02/2022","9 Horas",
                         R.drawable.grecia
+            )
+        )
+        //Spain
+        addRoute(
+            Route("satanas","Costa Rica","Spain","24/02/2022","9 Horas",
+                R.drawable.grecia
             )
         )
     }
@@ -42,4 +48,16 @@ class Routes {
     fun getRoute(position: Int) : Route {
         return this.routes!![position]
     }
+
+
+    fun setFiltrado(origen:String, destino:String){
+
+        filtradoroutes= routes.filter { x -> (x.Destiny==destino)&&(x.Origin==origen) } as ArrayList<Route>
+
+    }
+
+    fun getRoutesFiltrado(): ArrayList<Route>{
+        return this.filtradoroutes!!
+    }
+
 }

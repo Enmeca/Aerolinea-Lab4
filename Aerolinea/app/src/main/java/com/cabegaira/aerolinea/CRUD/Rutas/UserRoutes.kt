@@ -161,7 +161,7 @@ class UserRoutes : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
 
         private fun getListOfApplications() {
             val Nrutas = ArrayList<Route>()
-            for (p in trips.getRoutes()) {
+            for (p in trips.getRoutesFiltrado()) {
                 Nrutas.add(p)
             }
             adaptador = RecyclerView_Adapter_Routes(Nrutas)

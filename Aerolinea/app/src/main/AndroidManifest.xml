@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cabegaira.aerolinea">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,6 +13,7 @@
         <activity android:name=".CRUD.Rutas.UserRoutes"/>
     <activity android:name=".CRUD.Rutas.CreateRoute"/>
     <activity android:name=".ChangePass"/>
+        <activity android:name=".CRUD.Rutas.SearchRoute"/>
     <activity android:name=".CreateUser" />
 
         <activity
@@ -36,7 +37,7 @@
     <activity android:name=".CRUD.Country.CRUDCountry"/>
     <activity android:name=".CRUD.Rutas.CRUDRutas"/>
         <activity android:name=".CRUD.Rutas.EditRoute"/>
-
+<activity android:name=".MainActivity"/>
     <activity android:name=".CRUD.Flight.CRUDFlight"/>
         <activity android:name=".CRUD.Flight.UserFlight"/>
         <activity android:name=".CRUD.Flight.FlightDetail"/>

@@ -53,6 +53,16 @@ class TicketsSelection : AppCompatActivity() {
             layout.orientation = LinearLayout.HORIZONTAL
             for (j in 1..cols) {
                 val btn: Button = Button(applicationContext)
+
+                if(j==4){
+                    val btnP: Button = Button(applicationContext)
+                    btnP.layoutParams = LinearLayout.LayoutParams(90, 110)
+                    btnP.backgroundTintList = ColorStateList.valueOf(Color.WHITE)
+                    btnP.tag = i.toString() + j.toString()
+                    layout.addView(btnP)
+                }
+
+
                 btn.layoutParams = LinearLayout.LayoutParams(110, 110)
                 btn.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#808080"))
                 btn.tag = i.toString() + j.toString()

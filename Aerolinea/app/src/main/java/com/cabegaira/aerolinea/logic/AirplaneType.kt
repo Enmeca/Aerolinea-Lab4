@@ -14,12 +14,13 @@ class AirplaneType : Serializable {
         var passengers_quantity:Int = 0
         var rows_number:Int = 0
         var columns_number:Int = 0
-
+//{"id":"Airbus 320","year":2000,"model":"320","brand":"Airbus",
+//"passengersQuantity":132,"rowsNumber":6,"columnsNumber":22}
     constructor(
         at_id: String,
+        year: Int,
         model: String,
         brand: String,
-        year: Int,
         passengers_quantity: Int,
         rows_number: Int,
         columns_number: Int

@@ -9,10 +9,12 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.cabegaira.aerolinea.CRUD.AirplaneType.CRUDAirType
 import com.cabegaira.aerolinea.CRUD.Flight.CRUDFlight
 import com.cabegaira.aerolinea.CRUD.Flight.UserFlight
 import com.cabegaira.aerolinea.CRUD.Reservation.CRUDReservation
 import com.cabegaira.aerolinea.CRUD.Rutas.CRUDRutas
+import com.cabegaira.aerolinea.CRUD.Rutas.SearchRoute
 import com.cabegaira.aerolinea.logic.User
 import com.google.android.material.navigation.NavigationView
 
@@ -45,7 +47,7 @@ class MainMenu : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         when (item.itemId){
             R.id.nav_vuelos -> {
                 Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show()
-                val i = Intent(this, UserFlight::class.java)
+                val i = Intent(this, CRUDAirType::class.java)
                 startActivity(i)
             }
             R.id.nav_viajes -> {
