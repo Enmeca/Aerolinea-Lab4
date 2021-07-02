@@ -26,13 +26,13 @@ class ReservationDetail : AppCompatActivity() {
         setContentView(R.layout.view_reservation)
         dato = intent.getSerializableExtra("dato") as Reservation
         origenDestino = findViewById<View>(R.id.txtTripView)  as EditText
-        origenDestino!!.setText(dato!!.ruta)
+        origenDestino!!.setText(dato!!.route?.origin+" - "+dato!!.route?.destination)
         price = findViewById<View>(R.id.txtPrecioView)  as EditText
         price!!.setText(dato!!.totalPrice.toString())
         seats = findViewById<View>(R.id.txtAsientosView)  as EditText
         seats!!.setText(dato!!.seatQuantity.toString())
         date = findViewById<View>(R.id.tvFecha)  as EditText
-        date!!.setText(dato!!.date)
+        date!!.setText(dato!!.departureDate)
 
 
     }

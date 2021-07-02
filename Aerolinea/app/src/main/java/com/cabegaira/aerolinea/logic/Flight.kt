@@ -1,5 +1,6 @@
 package com.cabegaira.aerolinea.logic
 
+import com.cabegaira.aerolinea.R
 import java.io.Serializable
 
 // f_id number not null, ruta varchar2(20), departure_date date, 
@@ -7,29 +8,32 @@ import java.io.Serializable
 
 class Flight : Serializable {
 
-    var f_id:Int=0
-    var ruta:String=""
-    var departure_date:String=""
-    var return_date:String=""
+    var id:Int=0
+    var route:Route? = null
+    var departureDate:String=""
+    var returnDate:String=""
     var price:Int=0
-    var available_seats:Int=0
+    var availableSeats:Int=0
+    var plane:Airplane?=null
     var Foto:Int = 0
 
+
     constructor(
-        f_id: Int,
-        ruta: String,
-        departure_date: String,
-        return_date: String,
+        id: Int,
+        route: Route?,
+        departureDate: String,
+        returnDate: String,
         price: Int,
-        available_seats: Int,
-        Foto : Int
+        availableSeats: Int,
+        plane: Airplane?
     ) {
-        this.f_id = f_id
-        this.ruta = ruta
-        this.departure_date = departure_date
-        this.return_date = return_date
+        this.id = id
+        this.route = route
+        this.departureDate = departureDate
+        this.returnDate = returnDate
         this.price = price
-        this.available_seats = available_seats
-        this.Foto = Foto
+        this.availableSeats = availableSeats
+        this.plane = plane
+        this.Foto = R.drawable.default_country
     }
 }

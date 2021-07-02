@@ -6,7 +6,7 @@ import com.cabegaira.aerolinea.logic.Flight
 class Flights {
     private var flights : ArrayList<Flight> = ArrayList<Flight>()
 
-    init{
+/*    init{
         addFlight(
 //            f_id: Int,
 //            ruta: String,
@@ -20,8 +20,7 @@ class Flights {
                 "24/02/2021",
                 "13/05/2021",
                 650,
-                120,
-                R.drawable.greeceflag
+                120
             )
 
         )
@@ -32,8 +31,7 @@ class Flights {
                 "17/03/2021",
                 "30/03/2021",
                 1000,
-                145,
-                R.drawable.germanyflag
+                145
             )
 
         )
@@ -44,8 +42,7 @@ class Flights {
                 "20/04/2021",
                 "30/04/2021",
                 1200,
-                130,
-                R.drawable.japanflag
+                130
             )
 
         )
@@ -56,8 +53,7 @@ class Flights {
                 "17/03/2021",
                 "30/03/2021",
                 800,
-                145,
-                R.drawable.usaflag
+                145
             )
 
         )
@@ -68,12 +64,11 @@ class Flights {
                 "05/05/2021",
                 "15/05/2021",
                 1000,
-                145,
-                R.drawable.franceflag
+                145
             )
 
         )
-    }
+    }*/
 
     private object HOLDER {
         val INSTANCE = Flights()
@@ -102,5 +97,13 @@ class Flights {
     }
     fun getFlight(position: Int) : Flight {
         return this.flights!![position]
+    }
+
+    fun clearData(){
+        flights.clear()
+    }
+
+    fun setData(vuelos:ArrayList<Flight>){
+        flights = vuelos
     }
 }

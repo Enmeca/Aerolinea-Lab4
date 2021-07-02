@@ -41,9 +41,9 @@ class RecyclerView_Adapter_Routes(private var items: ArrayList<Route>): Recycler
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = itemsList?.get(position)
-        holder.itemView.findViewById<TextView>(R.id.tvNombre)?.text = item?.Name
-        holder.itemView.findViewById<TextView>(R.id.tvFecha)?.text = item?.ExitDate
-        holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)
+        holder.itemView.findViewById<TextView>(R.id.tvNombre)?.text = item?.destination
+        holder.itemView.findViewById<TextView>(R.id.tvFecha)?.text = "no tiene"
+        //holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)
 
         /*holder.itemView.setOnClickListener {
             val intent = Intent(this.mcontext, EditAplication::class.java)

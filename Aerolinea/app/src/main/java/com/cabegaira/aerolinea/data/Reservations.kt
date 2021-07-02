@@ -6,7 +6,7 @@ import com.cabegaira.aerolinea.logic.Reservation
 class Reservations {
     private var Reservations : ArrayList<Reservation> = ArrayList<Reservation>()
 
-    init{
+/*    init{
 //        res_id: Int, User_id: Int, totalPrice: Int, seatQuantity: Int)
         addReservation(
             Reservation(
@@ -48,7 +48,7 @@ class Reservations {
                 "15-07-2021/25-07-2021"
             )
         )
-    }
+    }*/
 
     private object HOLDER {
         val INSTANCE = Reservations()

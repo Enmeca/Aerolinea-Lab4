@@ -4,24 +4,14 @@ import java.io.Serializable
 
 
 class Route : Serializable {
-    
-    var Name:String = " "
 
-    var Origin:String = " "
-    var Destiny:String = " "
+    var id: String? = null
+    var origin: String? = null
+    var destination: String? = null
 
-    var ExitDate:String = " "
-    var Duration:String = " "
-
-    var Foto:Int = 0
-
-    internal constructor(Name: String, Origin: String, Destiny: String, ExitDate: String, Duration: String, Foto:Int) {
-        this.Name = Name
-        this.Origin = Origin
-        this.Destiny = Destiny
-        this.ExitDate = ExitDate
-        this.Duration = Duration
-        this.Foto = Foto
+    constructor(id: String?, origin: String?, destination: String?) {
+        this.id = id
+        this.origin = origin
+        this.destination = destination
     }
-
 }

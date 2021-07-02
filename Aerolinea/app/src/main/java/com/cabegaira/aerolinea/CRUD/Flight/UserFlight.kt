@@ -4,6 +4,8 @@ import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
+import android.os.StrictMode
+import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -27,22 +29,42 @@ import com.cabegaira.aerolinea.Login
 import com.cabegaira.aerolinea.R
 import com.cabegaira.aerolinea.logic.Flight
 import com.cabegaira.aerolinea.data.Flights
+import com.cabegaira.aerolinea.logic.Airplane
+import com.cabegaira.aerolinea.logic.AirplaneType
+import com.cabegaira.aerolinea.logic.Route
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.neovisionaries.ws.client.WebSocket
+import com.neovisionaries.ws.client.WebSocketAdapter
+import com.neovisionaries.ws.client.WebSocketFactory
+import org.json.JSONArray
+import org.json.JSONObject
+import org.json.JSONTokener
 
 class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 
     var INSTANCIA: Flights = Flights.instance
+    var gson: Gson = Gson()
+    var ws: WebSocket? = null
+    var factory : WebSocketFactory? =null
 
     lateinit var lista: RecyclerView
     lateinit var adaptador: RecyclerView_Adapter_Flight
     lateinit var ruta: Flight
     var archived = ArrayList<Flight>()
     var position: Int = 0
+    val policy = StrictMode.ThreadPolicy.Builder()
+        .permitAll()
+        .build()
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        StrictMode.setThreadPolicy(policy)
+
+        factory = WebSocketFactory().setConnectionTimeout(5000)
 
         setContentView(R.layout.list_flights_activity)
 
@@ -75,7 +97,53 @@ class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
             }
         })
 
-        getListOfFlights()
+        try {
+            ws = factory?.createSocket("ws://52.167.232.76:9393/controllerflights")
+
+            ws!!.addListener( object: WebSocketAdapter(){
+                override fun onTextMessage(websocket: WebSocket?, text: String?) {
+                    super.onTextMessage(websocket, text)
+                    Log.d("TESTE","ontextmesage"+text)
+                    val jsonArray = JSONTokener(text).nextValue() as JSONArray
+                    INSTANCIA.clearData()
+
+                    val itemType = object : TypeToken<List<Flight>>(){}.type
+                    var result: ArrayList<Flight> = gson.fromJson(text, itemType);
+
+/*                    for (i in 0 until jsonArray.length()){
+                        val svflight: Flight = Flight(
+                            jsonArray.getJSONObject(i).getInt("id"),
+                            Route(
+                                jsonArray.getJSONObject(i).getInt("")
+
+                            ),
+                            jsonArray.getJSONObject(i).getString("model"),
+                            jsonArray.getJSONObject(i).getString("brand"),
+                            jsonArray.getJSONObject(i).getInt("passengersQuantity"),
+                            jsonArray.getJSONObject(i).getInt("rowsNumber"),
+                            jsonArray.getJSONObject(i).getInt("columnsNumber")
+                        )
+                        INSTANCIA.addFlight(svflight)
+
+                    }*/
+
+                    INSTANCIA.setData(result)
+                    getListOfFlights()
+
+                }
+
+            })
+
+            ws?.connect()
+
+        }catch (e:Exception) {
+            Log.d("errorcito", e.toString())
+        }finally {
+            sendMessage()
+        }
+
+
+        //getListOfFlights()
 
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.START or ItemTouchHelper.END, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
@@ -184,6 +252,15 @@ class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
         adaptador = RecyclerView_Adapter_Flight(Nrutas)
         lista.adapter = adaptador
     }
-
+    fun sendMessage(){
+        if(ws?.isOpen()==true){
+            Log.d("boton","entra")
+            val x = JSONObject()
+            x.put("action","flights-list")
+            ws?.sendText(x.toString())
+        }else{
+            Log.d("boton","no entro")
+        }
+    }
 }
 

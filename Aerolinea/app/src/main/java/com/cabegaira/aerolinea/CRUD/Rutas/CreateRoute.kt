@@ -32,7 +32,7 @@ import java.util.*
 
 class CreateRoute : AppCompatActivity(){
 
-    var rutas: Routes = Routes.instance
+    /*var rutas: Routes = Routes.instance
 
     private lateinit var etOrigin: AutoCompleteTextView
     private lateinit var etDestiny: AutoCompleteTextView
@@ -346,5 +346,5 @@ class CreateRoute : AppCompatActivity(){
             calendar[Calendar.MONTH],
             calendar[Calendar.DAY_OF_MONTH]
         ).show()
-    }
+    }*/
 }

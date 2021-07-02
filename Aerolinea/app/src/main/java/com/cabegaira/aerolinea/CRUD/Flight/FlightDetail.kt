@@ -27,15 +27,15 @@ class FlightDetail : AppCompatActivity() {
         dato = intent.getSerializableExtra("dato") as Flight
         btn = findViewById(R.id.btn_checkin) as Button
         origenDestino = findViewById<View>(R.id.txtTripView)  as EditText
-        origenDestino!!.setText(dato!!.ruta)
+        origenDestino!!.setText(dato!!.route?.origin)
         salida = findViewById<View>(R.id.txtSalidaView)  as EditText
-        salida!!.setText(dato!!.departure_date)
+        salida!!.setText(dato!!.departureDate)
         llegada = findViewById<View>(R.id.txtLlegadaView)  as EditText
-        llegada!!.setText(dato!!.return_date)
+        llegada!!.setText(dato!!.returnDate)
         price = findViewById<View>(R.id.txtPrecioView)  as EditText
         price!!.setText(dato!!.price.toString())
         seats = findViewById<View>(R.id.txtAsientosView)  as EditText
-        seats!!.setText(dato!!.available_seats.toString())
+        seats!!.setText(dato!!.availableSeats.toString())
 
         btn!!.setOnClickListener{
             val i = Intent(this, TicketsSelection::class.java)

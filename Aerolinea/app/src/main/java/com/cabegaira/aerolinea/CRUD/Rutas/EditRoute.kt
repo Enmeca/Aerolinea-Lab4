@@ -32,7 +32,7 @@ import java.util.*
 
 
 class EditRoute : AppCompatActivity() {
-
+/*
     var rutas: Routes = Routes.instance
 
     var dato: Route? = null
@@ -363,5 +363,5 @@ class EditRoute : AppCompatActivity() {
             calendar[Calendar.MONTH],
             calendar[Calendar.DAY_OF_MONTH]
         ).show()
-    }
+    }*/
 }
