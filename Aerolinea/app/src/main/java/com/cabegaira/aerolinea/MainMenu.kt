@@ -9,7 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.cabegaira.aerolinea.CRUD.Airplane.CRUDAirplane
+//import com.cabegaira.aerolinea.CRUD.Airplane.CRUDAirplane
 import com.cabegaira.aerolinea.CRUD.AirplaneType.CRUDAirType
 import com.cabegaira.aerolinea.CRUD.Flight.CRUDFlight
 import com.cabegaira.aerolinea.CRUD.Flight.UserFlight

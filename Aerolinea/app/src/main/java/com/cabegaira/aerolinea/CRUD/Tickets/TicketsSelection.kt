@@ -20,7 +20,8 @@ import com.cabegaira.aerolinea.R
 class TicketsSelection : AppCompatActivity() {
 
     private var btn : Button? = null
-
+    var letter  = listOf<String>("A","B","C","D","E","F",
+                                 "G","H","I","J","K","L");
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,14 +43,21 @@ class TicketsSelection : AppCompatActivity() {
         var vuelo : TextView = findViewById(R.id.tvRuta)
         var bundle = intent.extras
         var ruta : String? = bundle!!.getString("Ruta")
-        var letter = arrayOf("A","B","C","D","E","F");
-        vuelo.text = "Vuelo: "+ ruta
+        var x : Int = 0
+        var seat : String = ""
+        var aux : String = ""
+        vuelo.text = ""
         for (i in 1..rows) {
+
+
+            x++
+
             val layout: LinearLayout = LinearLayout(applicationContext)
             layout.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
+
             layout.setHorizontalGravity(Gravity.CENTER)
             layout.orientation = LinearLayout.HORIZONTAL
             for (j in 1..cols) {
@@ -64,10 +72,14 @@ class TicketsSelection : AppCompatActivity() {
                 }
 
 
-                btn.layoutParams = LinearLayout.LayoutParams(110, 110)
+                btn.layoutParams = LinearLayout.LayoutParams(130, 130)
                 btn.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#808080"))
                 btn.tag = i.toString() + j.toString()
-                btn.text = "HOLA";
+
+
+                btn!!.text =letter[i-1] +j.toString();
+
+
                 layout.addView(btn)
                 btn.setOnClickListener {
                     if (btn.backgroundTintList!!.defaultColor == -15132207) {
