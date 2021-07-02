@@ -42,6 +42,7 @@ class TicketsSelection : AppCompatActivity() {
         var vuelo : TextView = findViewById(R.id.tvRuta)
         var bundle = intent.extras
         var ruta : String? = bundle!!.getString("Ruta")
+        var letter = arrayOf("A","B","C","D","E","F");
         vuelo.text = "Vuelo: "+ ruta
         for (i in 1..rows) {
             val layout: LinearLayout = LinearLayout(applicationContext)
@@ -66,6 +67,7 @@ class TicketsSelection : AppCompatActivity() {
                 btn.layoutParams = LinearLayout.LayoutParams(110, 110)
                 btn.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#808080"))
                 btn.tag = i.toString() + j.toString()
+                btn.text = "HOLA";
                 layout.addView(btn)
                 btn.setOnClickListener {
                     if (btn.backgroundTintList!!.defaultColor == -15132207) {
