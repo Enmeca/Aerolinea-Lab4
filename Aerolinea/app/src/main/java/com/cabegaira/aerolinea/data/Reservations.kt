@@ -2,9 +2,45 @@ package com.cabegaira.aerolinea.data
 
 import com.cabegaira.aerolinea.R
 import com.cabegaira.aerolinea.logic.Reservation
+import com.cabegaira.aerolinea.logic.Route
 
 class Reservations {
     private var Reservations : ArrayList<Reservation> = ArrayList<Reservation>()
+
+    init {
+        addReservation(
+            Reservation(
+                2,
+                "Philippe Gairaud",
+                3000,
+                4,
+                Route(
+                    "1",
+                    "Costa Rica",
+                    "Japon"
+                ),
+                "10-05-2021",
+                "20-05-2021",
+                30000
+            )
+        )
+        addReservation(
+            Reservation(
+                3,
+                "Philippe Gairaud",
+                1300,
+                1,
+                Route(
+                    "1",
+                    "Costa Rica",
+                    "Alemania"
+                ),
+                "10-05-2021",
+                "20-05-2021",
+                30000
+            )
+        )
+    }
 
 /*    init{
 //        res_id: Int, User_id: Int, totalPrice: Int, seatQuantity: Int)

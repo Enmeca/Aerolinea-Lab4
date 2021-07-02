@@ -46,7 +46,7 @@ class RecyclerView_Adapter_Reservation(private var items: ArrayList<Reservation>
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = itemsList?.get(position)
-        holder.itemView.findViewById<TextView>(R.id.tvRuta)?.text = item?.route?.destination
+        holder.itemView.findViewById<TextView>(R.id.tvRuta)?.text = item?.route?.origin+" - "+item?.route?.destination
         //holder.itemView.findViewById<TextView>(R.id.tvFecha)?.text = item?.date
         holder.itemView.findViewById<TextView>(R.id.tvTickets)?.text = item?.seatQuantity.toString()
         holder.itemView.findViewById<ImageView>(R.id.ivTicket).setImageResource(R.drawable.ticket_icon)

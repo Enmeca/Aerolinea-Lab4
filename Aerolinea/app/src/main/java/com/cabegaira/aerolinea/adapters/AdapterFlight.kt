@@ -58,6 +58,7 @@ class RecyclerView_Adapter_Flight(private var items: ArrayList<Flight>): Recycle
             intent.putExtra("dato", item)
             intent.putExtra("position",position)
             this.mcontext.startActivity(intent)
+
         }
     }
 

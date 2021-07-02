@@ -5,6 +5,8 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.os.StrictMode
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
@@ -14,7 +16,17 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.cabegaira.aerolinea.CRUD.Flight.UserFlight
+import com.cabegaira.aerolinea.Exitosa
 import com.cabegaira.aerolinea.R
+import com.cabegaira.aerolinea.logic.Flight
+import com.google.gson.reflect.TypeToken
+import com.neovisionaries.ws.client.WebSocket
+import com.neovisionaries.ws.client.WebSocketAdapter
+import com.neovisionaries.ws.client.WebSocketFactory
+import org.json.JSONArray
+import org.json.JSONObject
+import org.json.JSONTokener
+import kotlinx.android.synthetic.main.tickets_selection.*
 
 
 class TicketsSelection : AppCompatActivity() {
@@ -22,6 +34,12 @@ class TicketsSelection : AppCompatActivity() {
     private var btn : Button? = null
     var letter  = listOf<String>("A","B","C","D","E","F",
                                  "G","H","I","J","K","L");
+
+    var ws: WebSocket? = null
+    var factory : WebSocketFactory? =null
+    val policy = StrictMode.ThreadPolicy.Builder()
+        .permitAll()
+        .build()
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +47,23 @@ class TicketsSelection : AppCompatActivity() {
         loadSeats(12,6)
         btn = findViewById(R.id.confirm) as Button
         btn!!.setOnClickListener{
-            val i = Intent(this, UserFlight::class.java)
+            val i = Intent(this, Exitosa::class.java)
             Toast.makeText(this, "Compra Realizada", Toast.LENGTH_SHORT).show()
             startActivity(i)
+            finish()
         }
+        StrictMode.setThreadPolicy(policy)
+        factory = WebSocketFactory().setConnectionTimeout(5000)
+
+        try {
+            ws = factory?.createSocket("ws://52.167.232.76:9393/controllerflights")
+            ws?.connect()
+        }catch (e:Exception) {
+            Log.d("errorcito", e.toString())
+        }finally {
+            //sendMessage()
+        }
+
     }
 
     val seats = mutableListOf<String>()
@@ -95,4 +126,22 @@ class TicketsSelection : AppCompatActivity() {
             seatslayout.addView(layout)
         }
     }
+
+    fun setReservation(){
+
+
+
+    }
+
+    fun sendMessage(){
+        if(ws?.isOpen()==true){
+            Log.d("boton","entra")
+            val x = JSONObject()
+            x.put("action","flights-list")
+            ws?.sendText(x.toString())
+        }else{
+            Log.d("boton","no entro")
+        }
+    }
+
 }
