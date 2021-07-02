@@ -47,9 +47,10 @@ class RecyclerView_Adapter_Flight(private var items: ArrayList<Flight>): Recycle
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = itemsList?.get(position)
-        holder.itemView.findViewById<TextView>(R.id.tvNombre)?.text = item?.route?.destination
+        holder.itemView.findViewById<TextView>(R.id.tvDestiny)?.text = item?.route?.destination
+        holder.itemView.findViewById<TextView>(R.id.tvNombre)?.text = item?.route?.origin
         holder.itemView.findViewById<TextView>(R.id.tvPrecio)?.text = item?.price.toString()
-        holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)
+//        holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)
         holder.itemView.findViewById<ImageView>(R.id.ivPrice).setImageResource(R.drawable.dollar)
         //holder.itemView.findViewById<ImageView>(R.id.ivFoto).setImageResource(item?.Foto!!)
         holder.itemView.setOnClickListener {

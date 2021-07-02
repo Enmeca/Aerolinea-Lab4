@@ -49,6 +49,9 @@ class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
     var ws: WebSocket? = null
     var factory : WebSocketFactory? =null
 
+    var origen:String=""
+    var destiny:String=""
+
     lateinit var lista: RecyclerView
     lateinit var adaptador: RecyclerView_Adapter_Flight
     lateinit var ruta: Flight
@@ -83,6 +86,10 @@ class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
         lista.layoutManager = LinearLayoutManager(lista.context)
         lista.setHasFixedSize(true)
 
+
+        destiny=intent.getSerializableExtra("destiny") as String
+
+        origen=intent.getSerializableExtra("origen") as String
 
         navView.setNavigationItemSelectedListener(this)
 
@@ -245,11 +252,13 @@ class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
     }
 
     private fun getListOfFlights() {
-        val Nrutas = ArrayList<Flight>()
+        var Nrutas = ArrayList<Flight>()
         for (p in INSTANCIA.getFlights()) {
             Nrutas.add(p)
         }
+        Nrutas=Nrutas.filter { x -> (x.route?.destination==destiny)&&(x.route?.origin==origen) } as ArrayList<Flight>
         adaptador = RecyclerView_Adapter_Flight(Nrutas)
+        adaptador.notifyDataSetChanged()
         lista.adapter = adaptador
     }
     fun sendMessage(){

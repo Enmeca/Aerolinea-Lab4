@@ -29,21 +29,23 @@ import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
-import okhttp3.*
-import okio.ByteString
+
 import org.json.JSONObject
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
 
-class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class CRUDAirplane : AppCompatActivity() {
+/*
 
 
     var INSTANCIA: Airplanes = Airplanes.instance
 
+*/
 /*    var ws: WebSocket? = null
-    var factory : WebSocketFactory? =null*/
+    var factory : WebSocketFactory? =null*//*
+
     var gson: Gson = Gson()
     private val client: OkHttpClient? = null
         lateinit var lista: RecyclerView
@@ -66,11 +68,13 @@ class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             setContentView(R.layout.list_airplanes_activity)
 
            // factory = WebSocketFactory().setConnectionTimeout(5000)
+*/
 /*
             val request = Request.Builder().url("ws://echo.websocket.org").build()
             val listener = EchoWebSocketListener()
             val ws: WebSocket = client!!.newWebSocket(request, listener)
-            client.dispatcher().executorService().shutdown()*/
+            client.dispatcher().executorService().shutdown()*//*
+
 
             // wss test
             val client = OkHttpClient.Builder()
@@ -115,7 +119,8 @@ class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             })
 
 
-            /*try {
+            */
+/*try {
                 ws = factory?.createSocket("ws://52.167.232.76:9393/controllertypes")
 
 
@@ -136,7 +141,9 @@ class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     val itemType = object : TypeToken<List<Airplane>>(){}.type
                     var result: ArrayList<Airplane> = gson.fromJson(text, itemType);
                     INSTANCIA.getData(result)
-*//*                    for (i in 0 until jsonArray.length()){
+*//*
+*/
+/*                    for (i in 0 until jsonArray.length()){
                         val svtype:AirplaneType = AirplaneType(
                         jsonArray.getJSONObject(i).getString("id"),
                         jsonArray.getJSONObject(i).getInt("year"),
@@ -149,10 +156,13 @@ class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         types.addAirplaneType(svtype)
 
                     }*//*
+*/
+/*
                     Log.d("LIST",result.toString())
                 }
 
-            })*/
+            })*//*
+
 
             //Log.d("LISTENER", ws.ist)
             getListOfAirplanes()
@@ -168,10 +178,12 @@ class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                     return false
                 }
-                /*
+                */
+/*
                 * FIXME
                 *  poner el swipe para el usuario
-                * */
+                * *//*
+
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
                     position = viewHolder.adapterPosition
@@ -179,6 +191,7 @@ class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
                     if(direction == ItemTouchHelper.LEFT){
+*/
 /*                        ruta = Airplane(INSTANCIA.getAirplanes()[position], INSTANCIA.getAirplanes()[position].lastName,
                             jobs.getApplications()[position].streetAddress1, jobs.getApplications()[position].streetAddress2, jobs.getApplications()[position].city, jobs.getApplications()[position].state, jobs.getApplications()[position].postal, jobs.getApplications()[position].country, jobs.getApplications()[position].email, jobs.getApplications()[position].areaCode, jobs.getApplications()[position].phone, jobs.getApplications()[position].position, jobs.getApplications()[position].date)
                         jobs.deleteJob(position)
@@ -190,15 +203,18 @@ class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         }.show()
                         adaptador = RecyclerView_Adapter(jobs.getApplications())
                         lista.adapter = adaptador
-                        adaptador.notifyAirplanesSetChanged()*/
+                        adaptador.notifyAirplanesSetChanged()*//*
+
                     }else{
-                        /*val intent = Intent(this@CRUDJobs, EditAplication::class.java)
+                        */
+/*val intent = Intent(this@CRUDJobs, EditAplication::class.java)
                         val item = jobs.getJob(position)
                         intent.putExtra("dato", item )
                         intent.putExtra("position",position)
                         startActivity(intent)
                         adaptador.notifyAirplanesSetChanged()
-                        //getListOfPersons()*/
+                        //getListOfPersons()*//*
+
                     }
                 }
 
@@ -258,6 +274,7 @@ class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             lista.adapter = adaptador
         }
 
+*/
 /*    fun sendMessage(){
         if(ws?.isOpen()==true){
             Log.d("boton","entra")
@@ -266,7 +283,8 @@ class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }else{
             Log.d("boton","no entro")
         }
-    }*/
+    }*//*
+
 
     private class EchoWebSocketListener : WebSocketListener() { //Aqui escuchamos los cambios
         var gson:Gson = Gson()
@@ -302,5 +320,6 @@ class CRUDAirplane : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+*/
 
 }*/

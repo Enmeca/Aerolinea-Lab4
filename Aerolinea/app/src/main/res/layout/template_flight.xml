@@ -9,37 +9,61 @@
 
     <ImageView
         android:id="@+id/ivFoto"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="47dp"
+        android:layout_height="58dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:layout_weight="0"/>
-    <!--        app:srcCompat="@drawable/job" />-->
+        android:layout_weight="0"
+        app:srcCompat="@drawable/globe" />
 
     <TextView
         android:id="@+id/tvNombre"
-        android:layout_width="40dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:text="TextView"
         android:textColor="@color/black" />
 
+
     <ImageView
-        android:id="@+id/ivPrice"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:id="@+id/ivDestiny"
+        android:layout_width="37dp"
+        android:layout_height="48dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:layout_weight="0"/>
+        android:layout_weight="0"
+        app:srcCompat="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/tvDestiny"
+        android:layout_width="67dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textColor="@color/black" />
+
+
     <!--        app:srcCompat="@drawable/job" />-->
+
+    <ImageView
+        android:id="@+id/ivPrice"
+        android:layout_width="41dp"
+        android:layout_height="46dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="0" />
+
     <TextView
         android:id="@+id/tvPrecio"
-        android:layout_width="40dp"
+        android:layout_width="69dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
