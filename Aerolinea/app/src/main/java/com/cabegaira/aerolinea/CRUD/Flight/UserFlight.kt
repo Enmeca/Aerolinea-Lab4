@@ -1,7 +1,6 @@
 package com.cabegaira.aerolinea.CRUD.Flight
 
 import android.content.Intent
-import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
 import android.os.StrictMode
@@ -12,13 +11,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cabegaira.aerolinea.CRUD.Reservation.CRUDReservation
 import com.google.android.material.navigation.NavigationView
-import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -29,9 +26,6 @@ import com.cabegaira.aerolinea.Login
 import com.cabegaira.aerolinea.R
 import com.cabegaira.aerolinea.logic.Flight
 import com.cabegaira.aerolinea.data.Flights
-import com.cabegaira.aerolinea.logic.Airplane
-import com.cabegaira.aerolinea.logic.AirplaneType
-import com.cabegaira.aerolinea.logic.Route
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.neovisionaries.ws.client.WebSocket
@@ -60,7 +54,6 @@ class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
     val policy = StrictMode.ThreadPolicy.Builder()
         .permitAll()
         .build()
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,22 +110,7 @@ class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
                     val itemType = object : TypeToken<List<Flight>>(){}.type
                     var result: ArrayList<Flight> = gson.fromJson(text, itemType);
 
-/*                    for (i in 0 until jsonArray.length()){
-                        val svflight: Flight = Flight(
-                            jsonArray.getJSONObject(i).getInt("id"),
-                            Route(
-                                jsonArray.getJSONObject(i).getInt("")
 
-                            ),
-                            jsonArray.getJSONObject(i).getString("model"),
-                            jsonArray.getJSONObject(i).getString("brand"),
-                            jsonArray.getJSONObject(i).getInt("passengersQuantity"),
-                            jsonArray.getJSONObject(i).getInt("rowsNumber"),
-                            jsonArray.getJSONObject(i).getInt("columnsNumber")
-                        )
-                        INSTANCIA.addFlight(svflight)
-
-                    }*/
 
                     INSTANCIA.setData(result)
                     getListOfFlights()
@@ -144,13 +122,10 @@ class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
             ws?.connect()
 
         }catch (e:Exception) {
-            Log.d("errorcito", e.toString())
+            Log.d("Error", e.toString())
         }finally {
             sendMessage()
         }
-
-
-        //getListOfFlights()
 
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.START or ItemTouchHelper.END, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
@@ -167,64 +142,10 @@ class UserFlight : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 TODO("Not yet implemented")
             }
-            /*
-            * FIXME
-            *  poner el swipe para el usuario
-            * */
 
-           /* override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
-                position = viewHolder.adapterPosition
-                var quien: String = ""
-
-
-                if(direction == ItemTouchHelper.LEFT){
-/*                        ruta = Flight(INSTANCIA.getFlights()[position], INSTANCIA.getFlights()[position].lastName,
-                            jobs.getApplications()[position].streetAddress1, jobs.getApplications()[position].streetAddress2, jobs.getApplications()[position].city, jobs.getApplications()[position].state, jobs.getApplications()[position].postal, jobs.getApplications()[position].country, jobs.getApplications()[position].email, jobs.getApplications()[position].areaCode, jobs.getApplications()[position].phone, jobs.getApplications()[position].position, jobs.getApplications()[position].date)
-                        jobs.deleteJob(position)
-                        lista.adapter?.notifyItemRemoved(position)
-
-                        Snackbar.make(lista, aplication.firstName + "Se eliminaría... ", Snackbar.LENGTH_LONG).setAction("Undo") {
-                            jobs.getApplications().add(position, aplication)
-                            lista.adapter?.notifyItemInserted(position)
-                        }.show()
-                        adaptador = RecyclerView_Adapter(jobs.getApplications())
-                        lista.adapter = adaptador
-                        adaptador.notifyFlightsSetChanged()*/
-                }else{
-                    /*val intent = Intent(this@CRUDJobs, EditAplication::class.java)
-                    val item = jobs.getJob(position)
-                    intent.putExtra("dato", item )
-                    intent.putExtra("position",position)
-                    startActivity(intent)
-                    adaptador.notifyFlightsSetChanged()
-                    //getListOfPersons()*/
-                }
-            }*/
-
-            /*override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
-
-                RecyclerViewSwipeDecorator.Builder(this@UserFlight, c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                    .addSwipeLeftBackgroundColor(
-                        ContextCompat.getColor(this@UserFlight,
-                            R.color.Ruby_Red
-                        ))
-                    .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
-                    .addSwipeRightBackgroundColor(
-                        ContextCompat.getColor(this@UserFlight,
-                            R.color.Viridian_Green))
-                    .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24)
-                    .create()
-                    .decorate()
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-            }*/
 
         }
 
-
-
-        /*val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-        itemTouchHelper.attachToRecyclerView(lista)*/
 
 
     }
